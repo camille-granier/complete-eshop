@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import Products from './Products';
 
 const Home = () => {
     return (
@@ -8,6 +7,7 @@ const Home = () => {
             <div className='card'>
                 <img src='assets/bg.jpg'/>
             </div>
+            <Products/>
         </div>
     );
 };
