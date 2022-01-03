@@ -1,5 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import CartBtn from './buttons/CartBtn';
+import Login from './buttons/Login';
+import Register from './buttons/Register';
 
 const Navbar = () => {
     return (
@@ -26,9 +29,9 @@ const Navbar = () => {
         </li>
       </ul>
       <div className='buttons'>
-        {/*<NavLink  className='btn btn-outline-dark'><i className='fa fa-sign-in'></i>Login</NavLink>
-        <NavLink ></NavLink>
-    <NavLink ></NavLink>*/}
+        <Login />
+        <Register />
+        <CartBtn />
       </div>
     </div>
   </div>
