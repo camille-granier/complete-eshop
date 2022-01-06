@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 
 
 const Products = () => {
@@ -35,21 +36,22 @@ const Products = () => {
     const ShowProducts = () => {
         return (
             <>
-                <div className='buttons'>
-                    <button className='btn btn-outline-dark' onClick={() => setFilter(data)}>All</button>
-                    <button className='btn btn-outline-dark' onClick={() => filteredProducts("Men's Clothing")}>Men's Clothing</button>
-                    <button className='btn btn-outline-dark' onClick={() => filteredProducts("Women's clothing")}>Women's Clothing</button>
-                    <button className='btn btn-outline-dark' onClick={() => filteredProducts("Jewelery")}>Jewellery</button>
-                    <button className='btn btn-outline-dark' onClick={() => filteredProducts("electronics")}>Electronics</button>
+                <div className='buttons d-flex flex-row justify-content-center mb-5 pb-5'>
+                    <button className='btn btn-outline-dark me-3' onClick={() => setFilter(data)}>All</button>
+                    <button className='btn btn-outline-dark me-3' onClick={() => filteredProducts("men's clothing")}>Men's Clothing</button>
+                    <button className='btn btn-outline-dark me-3' onClick={() => filteredProducts("women's clothing")}>Women's Clothing</button>
+                    <button className='btn btn-outline-dark me-3' onClick={() => filteredProducts("jewelery")}>Jewellery</button>
+                    <button className='btn btn-outline-dark me-3' onClick={() => filteredProducts("electronics")}>Electronics</button>
                 </div>
                 {filter.map((product) => ( 
                    <>
-                        <div className='col-3'>
-                            <div className='card'>
-                                <img className='card-img-top' src={product.image} alt={product.title}/>
+                        <div className='col-md-3 mb-4'>
+                            <div className='card h-100 p-4 text-center' key={product.id}>
+                                <img className='card-img-top' height='250px' src={product.image} alt={product.title}/>
                                 <div className='card-body'>
-                                    <h5>{product.title.substring(0, 12)}</h5>
-                                    <p>€{product.price}</p>
+                                    <h5 className='card-title mb-0'>{product.title.substring(0, 12)}</h5>
+                                    <p className='card-text lead fw-bold'>€{product.price}</p>
+                                    <NavLink to='/' className='btn btn-outline-dark'>Buy Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -62,14 +64,14 @@ const Products = () => {
 
     return (
         <div>
-            <div className='container'>
+            <div className='container my-4 py-4'>
                 <div className='row'>
                     <div className='col-12 mb-4'>
-                        <h1 className='display-5 fw-bold text-center py-2'>Latest products</h1>
+                        <h1 className='display-5 fw-bold text-center py-3'>Latest products</h1>
                         <hr />
                     </div>
                 </div>
-                <div className='row'>
+                <div className='row justify-content-center'>
                     {loading ? <Loading /> : <ShowProducts />}
                 </div>
             </div>
