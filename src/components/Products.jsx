@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import axios from 'axios';
 
 
 const Products = () => {
@@ -6,34 +7,39 @@ const Products = () => {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState(data);
     const [loading, setLoading] = useState(false);
-    let componentMounted = true;
+    const [playOnce, setPlayOnce] = useState(true);
 
     useEffect(() => {
-        const getProducts = async () => {
-            setLoading(true);
-            const response = await fetch("https://fakestoreapi.com/products");
-            if (componentMounted) {
-                setData(await response.clone().json());
-                setFilter(await response.json());
-                setLoading(false);
-            }
-            return () => {
-                componentMounted = false;
-            }
-        }
-        getProducts();
+        axios.get("https://fakestoreapi.com/products")
+            .then((res) => {setData(res.data);
+                           setFilter(res.data);
+                           setPlayOnce(false)});
+
     }, []);
+
+    const Loading = () => {
+        return (
+            <div>...</div>
+        )
+    }
 
     const ShowProducts = () => {
         return (
             <>
-                {filter.map((product) => {
-                    <>
+                {filter.map((product) => ( 
+                   <>
                         <div className='col-3'>
-                            
+                            <div className='card'>
+                                <img className='card-img-top' src={product.image} alt={product.title}/>
+                                <div className='card-body'>
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
                         </div>
                     </>
-                }}
+                   )
+                )}
             </>
         )
     }
@@ -47,7 +53,9 @@ const Products = () => {
                         <hr />
                     </div>
                 </div>
-                <div className='row'></div>
+                <div className='row'>
+                    {loading ? <Loading /> : <ShowProducts />}
+                </div>
             </div>
         </div>
     );
