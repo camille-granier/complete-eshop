@@ -15,7 +15,7 @@ const Cart = () => {
 
     const cartItems = (cartItem) => {
         return (
-            <div className='my-5 py-2 bg-light rounded-3 mx-4' key={cartItem.id}>
+            <div className='mt-5 mb-1 py-2 bg-light rounded-3 mx-5' key={cartItem.id}>
                 <div className='container py-3'>
                     <button onClick={()=>handleClose(cartItem)} className='btn-close float-end' aria-label="Close"></button>
                     <div className='row'>
@@ -37,7 +37,7 @@ const Cart = () => {
         return (
                 <div className='container py-3'>
                     <div className='row'>
-                        <NavLink to='/'>Proceed to Checkout</NavLink>
+                        <NavLink className="btn btn-dark mx-auto w-25 m-2" to='/checkout'>Proceed to Checkout</NavLink>
                     </div>
                 </div>
         )
