@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.contact-wrap  {
+  background-image: url('../public/assets/bg.jpg');
+}
