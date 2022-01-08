@@ -8,17 +8,19 @@ const Products = () => {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState(data);
     const [loading, setLoading] = useState(false);
-    const [playOnce, setPlayOnce] = useState(true);
 
     useEffect(() => {
-
+        let mounted = true;
         setLoading(true);
-
+        if(mounted){
         axios.get("https://fakestoreapi.com/products")
             .then((res) => {setData(res.data);
                            setFilter(res.data);
-                           setPlayOnce(false);
                            setLoading(false)});
+            }
+            return () => {
+                mounted = false;
+            }
 
     }, []);
 

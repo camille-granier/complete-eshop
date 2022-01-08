@@ -35,7 +35,7 @@ const Product = () => {
     const ShowProduct = () => {
         return (
             <>
-                <div className='col-md-6 my-4 py-3'>
+                <div className='col-md-6 my-4 py-3' key={product.id}>
                     <img height="500vw" width="500vw" src={product.image} alt={product.title}/>
                 </div>
                 <div className='col-md-6 my-4 py-3'>
@@ -45,7 +45,7 @@ const Product = () => {
                     <h3 className='display-6 fw-bold my-4'>€{product.price}</h3>
                     <p className='lead'>{product.description}</p>
                     <button onClick={() => addProduct(product)} className='btn btn-dark px-4 py-2 me-2'>Add to Cart</button>
-                    <NavLink className='btn btn-dark' to='/'>Go to Cart</NavLink>
+                    <NavLink className='btn btn-dark' to='/cart'>Go to Cart</NavLink>
                 </div>
             </>
 
