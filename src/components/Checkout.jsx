@@ -1,6 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Checkout = () => {
+
+    const state = useSelector((state) => state.handleCart);
+
+    var total = 0;
+
+    const listItem = (item) => {
+        total = total + item.price;
+        return (
+            <li className="list-group-item d-flex justify-content-between lh-sm">
+              <h6 className="my-0">{item.title}</h6>
+            <span className="text-muted">€{item.price}</span>
+          </li>
+        )
+    } 
+
     return (
         <>
          <div className='container my-5'>
@@ -11,37 +27,17 @@ const Checkout = () => {
           <span className="badge bg-primary rounded-pill">3</span>
         </h4>
         <ul className="list-group mb-3">
-          <li className="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 className="my-0">Product name</h6>
-              <small className="text-muted">Brief description</small>
-            </div>
-            <span className="text-muted">€12</span>
-          </li>
-          <li className="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 className="my-0">Second product</h6>
-              <small className="text-muted">Brief description</small>
-            </div>
-            <span className="text-muted">€8</span>
-          </li>
-          <li className="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 className="my-0">Third item</h6>
-              <small className="text-muted">Brief description</small>
-            </div>
-            <span className="text-muted">€5</span>
-          </li>
+          {state.map(listItem)}
           <li className="list-group-item d-flex justify-content-between bg-light">
             <div className="text-success">
               <h6 className="my-0">Promo code</h6>
               <small>EXAMPLECODE</small>
             </div>
-            <span className="text-success">−€5</span>
+            <span className="text-success">€0</span>
           </li>
           <li className="list-group-item d-flex justify-content-between">
             <span>Total (EUR)</span>
-            <strong>€20</strong>
+            <strong>€{total}</strong>
           </li>
         </ul>
 
