@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Login = () => {
+const LoginBtn = () => {
     return (
         <>
            <NavLink to='/login' className='btn btn-outline-dark ms-2'>
@@ -11,4 +11,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginBtn;

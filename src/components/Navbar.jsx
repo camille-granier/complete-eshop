@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import CartBtn from './buttons/CartBtn';
-import Login from './buttons/Login';
+import LoginBtn from './buttons/LoginBtn';
 import Register from './buttons/Register';
 
 const Navbar = () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
         </li>
       </ul>
       <div className='buttons'>
-        <Login />
+        <LoginBtn />
         <Register />
         <CartBtn />
       </div>
