@@ -3,21 +3,22 @@ import React from 'react';
 const Contact = () => {
     return (
         <>
-            <div className="container">
-    <div className="p-4">
+            <div className="card contact-card">
+            <img src="./assets/bg.jpg" alt='background' className='bg-image contact' height='660vh'/>
+    <div className="contact-form card-img-overlay pt-4 mt-4 pb-1 mb-1 mx-auto w-50 px-5 bg-light">
       <form>
         <div className="row mb-3">
-          <div className="col">
+          <div className="col-md">
             <label for="first-name" className="form-label">First name</label>
             <input className="form-control" type="text" id="first-name" required />
           </div>
-          <div className="col">
+          <div className="col-md">
             <label for="last-name" className="form-label">Last name</label>
             <input className="form-control" type="text" id="last-name" required />
           </div>
         </div>
         <div className="row">
-          <div className="col">
+          <div className="col-md">
             <label for="email" className="form-label">Email</label>
             <input className="form-control" type="email" id="email" required />
           </div>

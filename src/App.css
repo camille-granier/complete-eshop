@@ -37,6 +37,34 @@
   }
 }
 
-.contact-wrap  {
+.contact  {
   background-image: url('../public/assets/bg.jpg');
+}
+
+.contact-form {
+  max-height: 550px;
+}
+
+@media (max-width: 900px) {
+  .contact {
+    background-size: cover;
+    height: 100%;
+  }
+  .contact-card {
+    height: 100vh;
+  }
+ 
+}
+
+@media (max-width: 450px) {
+  
+  .contact-form {
+    height: 90%;
+    min-width: 250px;
+    max-height: 1000px;
+  }
+
+  .contact {
+  
+  }
 }
