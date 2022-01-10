@@ -71,7 +71,6 @@
   .contact-card {
     height: 100vh;
   }
- 
 }
 
 @media (max-width: 450px) {
@@ -80,5 +79,9 @@
     height: 90%;
     min-width: 250px;
     max-height: 1000px;
+  }
+  .about { 
+    padding-top: 40px;
+    margin-top: 40px;
   }
 }
