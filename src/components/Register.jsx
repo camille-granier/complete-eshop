@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState, useRef } from 'react';
 
-const Login = () => {
+const Register = () => {
 
     const [isLogin, setIsLogin] = useState(false);
 
@@ -17,7 +17,7 @@ const Login = () => {
         if(isLogin) {
 
         } else {
-            fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBe_XAVBYsQKMxorakltzhqKxUnNGvCJjo',
+            fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBe_XAVBYsQKMxorakltzhqKxUnNGvCJjo',
             {
                 method: 'POST',
                 body: JSON.stringify({
@@ -51,7 +51,7 @@ const Login = () => {
 
                 <main className="form-signin">
                     <form onSubmit={submitHandler}>
-                        <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+                        <h1 className="h3 mb-3 fw-normal">Please register</h1>
 
                         <div className="form-floating">
                             <input type="email" className="form-control" id="floatingInput" ref={emailInputRef} placeholder="name@example.com" />
@@ -67,9 +67,9 @@ const Login = () => {
                                 <input type="checkbox" value="remember-me" /> Remember me
                             </label>
                         </div>
-                        <button className="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
-                        <NavLink to='/register' className='btn ms-2 mt-4'>
-                            Create a new account
+                        <button className="w-100 btn btn-lg btn-dark" type="submit">Sign up</button>
+                        <NavLink to='/login' className='btn ms-2 mt-4'>
+                            Login with existing account
                         </NavLink>
                     </form>
                 </main>
@@ -78,4 +78,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
