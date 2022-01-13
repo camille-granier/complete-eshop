@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
+import AuthContext from '../redux/context/auth-context';
 
 const Register = () => {
 
@@ -9,9 +10,11 @@ const Register = () => {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
+    const authCtx = useContext(AuthContext);
+
     const submitHandler = (event) => {
         event.preventDefault();
-        const entereedEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
 
         if(isLogin) {
@@ -21,17 +24,17 @@ const Register = () => {
             {
                 method: 'POST',
                 body: JSON.stringify({
-                    email: entereedEmail,
+                    email: enteredEmail,
                     password: enteredPassword,
                     returnSecureToken: true
                 }),
                 headers: {
-                    'Content-Type': 'application/json'
-                }
+                    'Content-Type': 'application/json',
+                },
             }
-            ).then(res => {
+            ).then((res) => {
                 if(res.ok) {
-
+                    return res.json();
                 } else {
                     return res.json().then((data) => {
                         let errorMessage = 'Authentication failed!';
@@ -39,8 +42,16 @@ const Register = () => {
                             errorMessage = data.error.message;
                         }
                         alert(errorMessage);
-                    })
+                        throw new Error(errorMessage);
+                    });
                 }
+            })
+            .then((data) => {
+                authCtx.login(data.idToken);
+                console.log(data)
+            })
+            .catch((err) => {
+                alert(err.message);
             })
         }
     };

@@ -1,34 +1,39 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useState, useRef, useContext, } from 'react';
+import AuthContext from '../redux/context/auth-context';
 
 const Login = () => {
 
     const [isLogin, setIsLogin] = useState(false);
 
+    const navigate = useNavigate();
+
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
+    const authCtx = useContext(AuthContext);
+
     const submitHandler = (event) => {
         event.preventDefault();
-        const entereedEmail = emailInputRef.current.value;
+        const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
 
             fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBe_XAVBYsQKMxorakltzhqKxUnNGvCJjo',
             {
                 method: 'POST',
                 body: JSON.stringify({
-                    email: entereedEmail,
+                    email: enteredEmail,
                     password: enteredPassword,
                     returnSecureToken: true
                 }),
                 headers: {
-                    'Content-Type': 'application/json'
-                }
+                    'Content-Type': 'application/json',
+                },
             }
-            ).then(res => {
+            ).then((res) => {
                 if(res.ok) {
-
+                    return res.json();
                 } else {
                     return res.json().then((data) => {
                         let errorMessage = 'Authentication failed!';
@@ -40,7 +45,10 @@ const Login = () => {
                     });
                 }
             })
-            .then((data) => {})
+            .then((data) => {
+                authCtx.login(data.idToken);
+                navigate('/');
+            })
             .catch((err) => {
                 alert(err.message);
             });
