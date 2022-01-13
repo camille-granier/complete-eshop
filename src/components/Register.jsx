@@ -51,15 +51,15 @@ const Register = () => {
 
                 <main className="form-signin">
                     <form onSubmit={submitHandler}>
-                        <h1 className="h3 mb-3 fw-normal">Please register</h1>
+                        <h1 className="h3 mb-3 fw-normal">Please Sign-up</h1>
 
                         <div className="form-floating">
                             <input type="email" className="form-control" id="floatingInput" ref={emailInputRef} placeholder="name@example.com" />
-                            <label for="floatingInput">Email address</label>
+                            <label htmlFor="floatingInput">Email address</label>
                         </div>
                         <div className="form-floating">
                             <input type="password" className="form-control" id="floatingPassword" ref={passwordInputRef} placeholder="Password" />
-                            <label for="floatingPassword">Password</label>
+                            <label htmlFor="floatingPassword">Password</label>
                         </div>
 
                         <div className="checkbox mb-3">
@@ -67,7 +67,7 @@ const Register = () => {
                                 <input type="checkbox" value="remember-me" /> Remember me
                             </label>
                         </div>
-                        <button className="w-100 btn btn-lg btn-dark" type="submit">Sign up</button>
+                        <button className="w-100 btn btn-lg btn-dark" type="submit">Create Account</button>
                         <NavLink to='/login' className='btn ms-2 mt-4'>
                             Login with existing account
                         </NavLink>

@@ -14,9 +14,6 @@ const Login = () => {
         const entereedEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
 
-        if(isLogin) {
-
-        } else {
             fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBe_XAVBYsQKMxorakltzhqKxUnNGvCJjo',
             {
                 method: 'POST',
@@ -39,10 +36,14 @@ const Login = () => {
                             errorMessage = data.error.message;
                         }
                         alert(errorMessage);
-                    })
+                        throw new Error(errorMessage);
+                    });
                 }
             })
-        }
+            .then((data) => {})
+            .catch((err) => {
+                alert(err.message);
+            });
     };
 
     return (
@@ -55,11 +56,11 @@ const Login = () => {
 
                         <div className="form-floating">
                             <input type="email" className="form-control" id="floatingInput" ref={emailInputRef} placeholder="name@example.com" />
-                            <label for="floatingInput">Email address</label>
+                            <label htmlFor="floatingInput">Email address</label>
                         </div>
                         <div className="form-floating">
                             <input type="password" className="form-control" id="floatingPassword" ref={passwordInputRef} placeholder="Password" />
-                            <label for="floatingPassword">Password</label>
+                            <label htmlFor="floatingPassword">Password</label>
                         </div>
 
                         <div className="checkbox mb-3">
@@ -77,5 +78,6 @@ const Login = () => {
         </>
     );
 };
+
 
 export default Login;
