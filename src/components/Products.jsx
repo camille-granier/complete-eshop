@@ -38,16 +38,17 @@ const Products = () => {
     const ShowProducts = () => {
         return (
             <>
-                <div className='buttons d-flex flex-row justify-content-center mb-5 pb-5'>
-                    <button className='btn btn-outline-dark me-3' onClick={() => setFilter(data)}>All</button>
-                    <button className='btn btn-outline-dark me-3' onClick={() => filteredProducts("men's clothing")}>Men's Clothing</button>
-                    <button className='btn btn-outline-dark me-3' onClick={() => filteredProducts("women's clothing")}>Women's Clothing</button>
-                    <button className='btn btn-outline-dark me-3' onClick={() => filteredProducts("jewelery")}>Jewellery</button>
-                    <button className='btn btn-outline-dark me-3' onClick={() => filteredProducts("electronics")}>Electronics</button>
+            
+                <div className='buttons d-flex flex-row flex-wrap justify-content-center mb-5 pb-5'>
+                    <button className='btn btn-outline-dark me-sm-3' onClick={() => setFilter(data)}>All</button>
+                    <button className='btn btn-outline-dark me-sm-3' onClick={() => filteredProducts("men's clothing")}>Men's Clothing</button>
+                    <button className='btn btn-outline-dark me-sm-3' onClick={() => filteredProducts("women's clothing")}>Women's Clothing</button>
+                    <button className='btn btn-outline-dark me-sm-3' onClick={() => filteredProducts("jewelery")}>Jewellery</button>
+                    <button className='btn btn-outline-dark me-sm-3' onClick={() => filteredProducts("electronics")}>Electronics</button>
                 </div>
                 {filter.map((product) => ( 
-                   <>
-                        <div className='col-md-3 mb-4' key={product.id}>
+                    <>
+                        <div className='col-lg-3 mb-4' key={product.id} style={{width: "18rem"}}>
                             <div className='card h-80 p-4 text-center'>
                                 <img className='card-img-top' height='220px' src={product.image} alt={product.title}/>
                                 <div className='card-body'>
@@ -60,23 +61,25 @@ const Products = () => {
                     </>
                    )
                 )}
+                
             </>
+
         )
     }
 
     return (
         <div>
-            <div className='container my-4 py-4'>
+            <div className='container my-4 py-4 mx-0 d-flex justify-content-center'>
                 <div className='row'>
                     <div className='col-12 mb-4'>
                         <h1 className='display-5 fw-bold text-center py-3'>Latest products</h1>
                         <hr />
                     </div>
                 </div>
-                <div className='row justify-content-center'>
+                </div>
+                <div className='row justify-content-center mx-auto px-4'>
                     {loading ? <Loading /> : <ShowProducts />}
                 </div>
-            </div>
         </div>
     );
 };
