@@ -31,7 +31,7 @@ const Products = () => {
 
     const Loading = () => {
         return (
-            <div>...</div>
+            <div><span className="loader bg-danger"></span></div>
         )
     }
 
@@ -69,11 +69,11 @@ const Products = () => {
 
     return (
         <div>
-            <div className='container my-4 py-4 mx-0 d-flex justify-content-center'>
+            <div className='container my-4 py-4 mx-auto d-flex justify-content-center'>
                 <div className='row'>
-                    <div className='col-12 mb-4'>
+                    <div className='col-12 text-center mb-4'>
                         <h1 className='display-5 fw-bold text-center py-3'>Latest products</h1>
-                        <hr />
+                        <hr/>
                     </div>
                 </div>
                 </div>
