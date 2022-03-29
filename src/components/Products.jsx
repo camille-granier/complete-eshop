@@ -31,7 +31,7 @@ const Products = () => {
 
     const Loading = () => {
         return (
-            <div><span className="loader bg-danger"></span></div>
+            <div className='d-flex justify-content-center'><span className="loader"></span></div>
         )
     }
 

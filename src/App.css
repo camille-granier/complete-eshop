@@ -70,7 +70,7 @@
   display: block;
   margin: 15px 100px;
   position: relative;
-  background: #FFF;
+  background: black;
   box-sizing: border-box;
   animation: shadowExpandX 2s linear infinite alternate;
 }
@@ -78,11 +78,11 @@
 @keyframes shadowExpandX {
   0% {
     box-shadow: 0 0, 0 0;
-    color: rgba(255, 255, 255, 0.2);
+    color: #606470;
   }
   100% {
     box-shadow: -24px 0, 24px 0;
-    color: rgba(255, 255, 255, 0.8);
+    color: black;
   }
 }
 
