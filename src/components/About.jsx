@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const About = () => {
     return (
         <div>
-            <div className='container'>
+            <div className='container pb-5'>
                 <div className='about row py-md-5 my-md-5'>
                     <div className='col-lg-6 d-flex flex-column justify-content-center text-center'>
                         <h1 className='display-1 mb-4'>About Us</h1>

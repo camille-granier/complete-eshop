@@ -89,7 +89,7 @@
 @media (max-width: 900px) {
   .contact {
     background-size: cover;
-    height: 100%;
+    height: 100vh;
   }
   .contact-card {
     height: 100vh;
