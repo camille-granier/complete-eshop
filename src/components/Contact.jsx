@@ -16,7 +16,7 @@ const Contact = () => {
   const toastifySuccess = () => {
     toast('Form sent!', {
       position: 'bottom-right',
-      autoClose: 10000,
+      autoClose: 5000,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,  
@@ -39,12 +39,12 @@ const Contact = () => {
     return (
         <>
             <div className="card contact-card">
-            <img src="./assets/bg.jpg" alt='background' className='bg-image contact' height='660vh'/>
-    <div className="contact-form card-img-overlay pt-4 mt-4 pb-1 mb-2 mx-auto w-50 px-5 bg-light">
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="row mb-3 mt-4">
-          <div className="col-md">
-            <label for="first-name" className="form-label">First name</label>
+            <img src="./assets/bg.jpg" alt='background' className='bg-image contact'/>
+    <div className=" contact-form card-img-overlay d-flex flex-column justify-content-center">
+      <form className='bg-light p-4 mx-auto rounded' onSubmit={handleSubmit(onSubmit)} noValidate>
+        <div className="row mb-3 mt-1 px-2">
+          <div className="col-md mb-3">
+            <label htmlFor="first-name" className="form-label">First name</label>
             <input className="form-control" 
                     type="text" 
                     name="firstname" 
@@ -64,7 +64,7 @@ const Contact = () => {
                             {errors.firstname.message}</span>)}
           </div>
           <div className="col-md">
-            <label for="last-name" className="form-label">Last name</label>
+            <label htmlFor="last-name" className="form-label">Last name</label>
             <input className="form-control" 
                   name="last-name" 
                   type="text" 
@@ -84,9 +84,9 @@ const Contact = () => {
                             {errors.lastname.message}</span>)}
           </div>
         </div>
-        <div className="row mt-3">
-          <div className="col-md">
-            <label for="email" className="form-label">Email</label>
+        <div className="row mt-3 px-2">
+          <div className="col-md mb-3">
+            <label htmlFor="email" className="form-label">Email</label>
             <input className="form-control" 
                     type="email" 
                     name="email" 
@@ -102,7 +102,7 @@ const Contact = () => {
                                     Please enter a valid email address</span>)}
           </div>
           <div className="col">
-            <label for="subject" className="form-label">Subject</label>
+            <label htmlFor="subject" className="form-label">Subject</label>
             <input className="form-control" 
                    type="text" 
                    id="subject" 
@@ -122,9 +122,9 @@ const Contact = () => {
                             {errors.subject.message}</span>)}
           </div>
         </div>
-        <div className="row mt-3">
+        <div className="row mt-3 px-2">
           <div className="col">
-            <label for="message" className="form-label">Message</label>
+            <label htmlFor="message" className="form-label">Message</label>
             <textarea className="form-control" 
                       name="message" 
                       rows="4" id="message" 
@@ -135,7 +135,6 @@ const Contact = () => {
                       {errors.message && (<span  
                           className='error-message text-danger'>
                             Please enter a message</span>)}
-            <div id="message-help" className="form-text">Max. 500 characters</div>
           </div>
         </div>
         <div className="d-flex justify-content-center pt-3 mt-3
