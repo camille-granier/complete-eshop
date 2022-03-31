@@ -9,6 +9,7 @@ import { Provider} from 'react-redux';
 import { AuthContextProvider } from './redux/context/auth-context';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <AuthContextProvider>

@@ -58,7 +58,7 @@ const Register = () => {
 
     return (
         <>
-            <div className="login-form text-center">
+            <div className="login-form text-center col-lg">
 
                 <main className="form-signin">
                     <form onSubmit={submitHandler}>
