@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import CartBtn from './buttons/CartBtn';
 import LoginBtn from './buttons/LoginBtn';
@@ -9,10 +9,13 @@ import AuthContext from '../redux/context/auth-context';
 
 const NavBar = () => {
 
+  
+  const navigate = useNavigate();
   const AuthCtx = useContext(AuthContext);
   const isLoggedIn = AuthCtx.isLoggedIn;
   const logoutHandler = () => {
     AuthCtx.logout();
+    navigate('/');
   }
 
     return (
@@ -48,7 +51,7 @@ const NavBar = () => {
         <>
            <button className='btn-header btn btn-outline-dark ms-2'
                    onClick={logoutHandler}>
-               <span className='fa fa-sign-out me-2'></span><span className="btn-text">Login</span>
+               <span className='fa fa-sign-out me-2'></span><span className="btn-text">Logout</span>
             </button> 
         </>
 }

@@ -49,6 +49,7 @@ const Login = () => {
                 }
             })
             .then((data) => {
+                const expirationTime = new Date(new Date().getTime() + (+data.expiresIn * 1000))
                 authCtx.login(data.idToken);
                 navigate('/');
             })
