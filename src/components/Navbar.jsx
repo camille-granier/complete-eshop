@@ -1,43 +1,44 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import CartBtn from './buttons/CartBtn';
 import LoginBtn from './buttons/LoginBtn';
 import RegisterBtn from './buttons/RegisterBtn';
 
-const Navbar = () => {
+const NavBar = () => {
     return (
         <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <div className="container-fluid px-4">
-    <NavLink className="navbar-brand fw-bold" to="/">The Collection</NavLink>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarNav">
-      <ul className="navbar-nav mx-auto">
-        <li className="nav-item">
-          <NavLink className="nav-link" aria-current="page" to='/'>Home</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" to="/products">Products</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" to='/about'>About</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" to='/contact'>Contact</NavLink>
-        </li>
-      </ul>
-      <div className='buttons'>
+        <Navbar bg="light" expand="lg">
+  <Container>
+    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
+      <Nav className="me-auto">
+        <NavLink to="/"
+                className= { 
+                  (thisNav) => thisNav.isActive ? "nav-active" : ''}
+                  >Home</NavLink>
+        <NavLink to="/products"
+                  className= { 
+                    (thisNav) => thisNav.isActive ? "nav-active" : ''}
+                    >Products</NavLink>
+        <NavLink to="/about"
+                  className= { 
+                    (thisNav) => thisNav.isActive ? "nav-active" : ''}
+                    >About</NavLink>
+        <NavLink to="/contact"
+                  className= { 
+                    (thisNav) => thisNav.isActive ? "nav-active" : ''}
+                    >Contact</NavLink>
+        </Nav>
         <LoginBtn />
         <RegisterBtn />
         <CartBtn />
-      </div>
-    </div>
-  </div>
-</nav>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
         </>
     );
 };
 
-export default Navbar;
+export default NavBar;
