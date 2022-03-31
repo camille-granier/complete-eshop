@@ -4,8 +4,17 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import CartBtn from './buttons/CartBtn';
 import LoginBtn from './buttons/LoginBtn';
 import RegisterBtn from './buttons/RegisterBtn';
+import { useContext } from 'react';
+import AuthContext from '../redux/context/auth-context';
 
 const NavBar = () => {
+
+  const AuthCtx = useContext(AuthContext);
+  const isLoggedIn = AuthCtx.isLoggedIn;
+  const logoutHandler = () => {
+    AuthCtx.logout();
+  }
+
     return (
         <>
         <Navbar bg="light" expand="lg">
@@ -33,12 +42,20 @@ const NavBar = () => {
        </Nav>
       </Navbar.Collapse>
       <div className='nav-cont'>
-  <LoginBtn />
-  <RegisterBtn />
+  {!isLoggedIn  
+  ? <LoginBtn /> 
+  :
+        <>
+           <button className='btn-header btn btn-outline-dark ms-2'
+                   onClick={logoutHandler}>
+               <span className='fa fa-sign-out me-2'></span><span className="btn-text">Login</span>
+            </button> 
+        </>
+}
+  {!isLoggedIn && <RegisterBtn />}
   <CartBtn />
   </div>
   </Container>
- 
 </Navbar>
         </>
     );

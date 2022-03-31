@@ -2,10 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState, useRef, useContext } from 'react';
 import AuthContext from '../redux/context/auth-context';
+import { set } from 'react-hook-form';
 
 const Register = () => {
 
     const [isLogin, setIsLogin] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
@@ -17,6 +19,7 @@ const Register = () => {
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
 
+        setIsLoading(true)
         if(isLogin) {
 
         } else {
@@ -33,6 +36,7 @@ const Register = () => {
                 },
             }
             ).then((res) => {
+                setIsLoading(false)
                 if(res.ok) {
                     return res.json();
                 } else {
@@ -78,7 +82,7 @@ const Register = () => {
                                 <input type="checkbox" value="remember-me" /> Remember me
                             </label>
                         </div>
-                        <button className="w-100 btn btn-lg btn-dark" type="submit">Create Account</button>
+                        {!isLoading ? <button className="w-100 btn btn-lg btn-dark" type="submit">Create Account</button> : <p>Sending request...</p>}
                         <NavLink to='/login' className='btn ms-2 mt-4'>
                             Login with existing account
                         </NavLink>

@@ -6,6 +6,7 @@ import AuthContext from '../redux/context/auth-context';
 const Login = () => {
 
     const [isLogin, setIsLogin] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ const Login = () => {
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
 
+        setIsLoading(true)
             fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBe_XAVBYsQKMxorakltzhqKxUnNGvCJjo',
             {
                 method: 'POST',
@@ -32,6 +34,7 @@ const Login = () => {
                 },
             }
             ).then((res) => {
+                setIsLoading(false)
                 if(res.ok) {
                     return res.json();
                 } else {
@@ -76,7 +79,7 @@ const Login = () => {
                                 <input type="checkbox" value="remember-me" /> Remember me
                             </label>
                         </div>
-                        <button className="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
+                        {!isLoading ? <button className="w-100 btn btn-lg btn-dark" type="submit">Sign in</button> : <p>Loging in</p> }
                         <NavLink to='/register' className='btn ms-2 mt-4'>
                             Create a new account
                         </NavLink>
