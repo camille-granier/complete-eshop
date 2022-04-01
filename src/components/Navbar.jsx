@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import CartBtn from './buttons/CartBtn';
-import LoginBtn from './buttons/LoginBtn';
-import RegisterBtn from './buttons/RegisterBtn';
+import CartBtn from './UI/CartBtn';
+import LoginBtn from './UI/LoginBtn';
+import RegisterBtn from './UI/RegisterBtn';
 import { useContext } from 'react';
 import AuthContext from '../redux/context/auth-context';
 

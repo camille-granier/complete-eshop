@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState, useRef, useContext } from 'react';
 import AuthContext from '../redux/context/auth-context';
-import { set } from 'react-hook-form';
+import Modal from './UI/Modal';
+
 
 const Register = () => {
 
@@ -59,6 +60,15 @@ const Register = () => {
             })
         }
     };
+
+    const Error = () => {
+     
+            return (
+                <Modal>
+                    
+                </Modal>
+            );
+    }
 
     return (
         <>
