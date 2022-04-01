@@ -2,13 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState, useRef, useContext } from 'react';
 import AuthContext from '../redux/context/auth-context';
-import Modal from './UI/Modal';
+
 
 
 const Register = () => {
 
     const [isLogin, setIsLogin] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [errorM, setErrorM] = useState('');
+
 
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
@@ -46,7 +48,7 @@ const Register = () => {
                         if(data && data.error && data.error.message) {
                             errorMessage = data.error.message;
                         }
-                        alert(errorMessage);
+                        setErrorM(errorMessage)
                         throw new Error(errorMessage);
                     });
                 }
@@ -56,17 +58,14 @@ const Register = () => {
                 console.log(data)
             })
             .catch((err) => {
-                alert(err.message);
             })
         }
     };
 
     const Error = () => {
-     
+     const errorText = errorM.replace("_", " ")
             return (
-                <Modal>
-                    
-                </Modal>
+                    <p className='text-danger'>{errorText}</p>
             );
     }
 
@@ -93,6 +92,7 @@ const Register = () => {
                             </label>
                         </div>
                         {!isLoading ? <button className="w-100 btn btn-lg btn-dark" type="submit">Create Account</button> : <p>Sending request...</p>}
+                        {errorM && <Error/>}
                         <NavLink to='/login' className='btn ms-2 mt-4'>
                             Login with existing account
                         </NavLink>
