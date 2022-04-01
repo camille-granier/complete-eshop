@@ -7,6 +7,7 @@ const Login = () => {
 
     const [isLogin, setIsLogin] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [errorM, setErrorM] = useState('');
 
     const navigate = useNavigate();
 
@@ -43,7 +44,7 @@ const Login = () => {
                         if(data && data.error && data.error.message) {
                             errorMessage = data.error.message;
                         }
-                        alert(errorMessage);
+                        setErrorM(errorMessage);
                         throw new Error(errorMessage);
                     });
                 }
@@ -54,9 +55,16 @@ const Login = () => {
                 navigate('/');
             })
             .catch((err) => {
-                alert(err.message);
             });
     };
+
+    const Error = () => {
+        const errorText = errorM.replace("_", " ");
+
+        return (
+            <p className='text-danger'>{errorText}</p>
+        )
+    }
 
     return (
         <>
@@ -81,6 +89,7 @@ const Login = () => {
                             </label>
                         </div>
                         {!isLoading ? <button className="w-100 btn btn-lg btn-dark" type="submit">Sign in</button> : <p>Loging in</p> }
+                        {errorM && <Error/>}
                         <NavLink to='/register' className='btn ms-2 mt-4'>
                             Create a new account
                         </NavLink>
